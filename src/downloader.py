@@ -1,6 +1,6 @@
 import re
-from pathlib import Path
 from pytubefix import YouTube
+from pathlib import Path
 
 def extract_video_id(url: str) -> str:
     """
@@ -31,26 +31,29 @@ def extract_video_id(url: str) -> str:
     raise ValueError(f"Could not extract video ID from URL: {url}")
 
 def download_audio(url: str) -> Path:
-    """
-    Downloads the audio stream of a YouTube video and saves it into the /temp directory.
-    Returns the path to the downloaded audio file.
-    """
     video_id = extract_video_id(url)
 
-    # Create temp directory if it doesn't exist
     temp_dir = Path("temp")
     temp_dir.mkdir(exist_ok=True)
 
-    # Build output path: temp/<video_id>.mp4
-    output_path = temp_dir / f"{video_id}.mp4"
-
-    # Download audio
     yt = YouTube(url)
+    title = yt.title
+
     audio_stream = yt.streams.filter(only_audio=True).first()
-
     if audio_stream is None:
-        raise RuntimeError("No audio stream available for this video.")
+        raise RuntimeError("No audio stream found.")
 
-    audio_stream.download(output_path=str(output_path))
+    # Download to temp directory with default pytubefix filename
+    downloaded = Path(audio_stream.download(output_path=str(temp_dir)))
 
-    return output_path
+    # Extract extension
+    ext = downloaded.suffix  # .m4a, .mp4, .webm
+
+    # Our final desired path
+    final = temp_dir / f"{video_id}{ext}"
+
+    # Rename real file to our expected name
+    if downloaded != final:
+        downloaded.rename(final)
+
+    return final, title

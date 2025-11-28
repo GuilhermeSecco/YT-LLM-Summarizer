@@ -20,7 +20,7 @@ def convert_to_wav(input_path: Path) -> Path:
         str(output_path)
     ]
 
-    subprocess.run(command, stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
+    subprocess.run(command, check=True)
 
     if not output_path.exists():
         raise RuntimeError("ffmpeg failed to convert the audio file.")

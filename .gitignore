@@ -216,3 +216,5 @@ temp/
 *.wav
 *.mp4
 *.webm
+
+.idea
