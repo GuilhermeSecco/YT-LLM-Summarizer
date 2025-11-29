@@ -1,4 +1,4 @@
-🎥 YT-LLM-Summarizer
+# 🎥 YT-LLM-Summarizer
 
 > A Python tool that downloads YouTube videos, transcribes them, and generates high-quality summaries using LLMs (Gemini).
 
