@@ -1,6 +1,16 @@
 # 🎥 YT-LLM-Summarizer
 
+![Python](https://img.shields.io/badge/Python-3.12-blue)
+![Gemini](https://img.shields.io/badge/LLM-Gemini%202.0%20Flash-orange)
+![Whisper](https://img.shields.io/badge/ASR-Whisper-green)
+![YouTube](https://img.shields.io/badge/YouTube-Audio%20Extraction-red)
+![License](https://img.shields.io/badge/License-MIT-lightgrey)
+
 > A Python tool that downloads YouTube videos, transcribes them, and generates high-quality summaries using LLMs (Gemini).
+
+<p align='center'>
+    <img width="500" alt="Thumbnail" src="https://github.com/user-attachments/assets/33dc7c59-1d6b-4cea-b468-33b4b4e078e3" />
+</p>
 
 # 🇺🇸 English
 ## 📌 Overview
@@ -21,6 +31,10 @@ YT-LLM-Summarizer is a command-line tool that:
 Fully automated.
 
 Works on long videos (1h+).
+
+Pipeline:
+        
+YouTube URL → Download (pytubefix) → Convert to WAV (ffmpeg) → Transcribe (Whisper) → Summarize (Gemini) → Markdown Output
 
 ## ⭐ Features
 
@@ -53,16 +67,19 @@ Works on long videos (1h+).
     ├── uv.lock
     └── pyproject.toml
 
-## 🛠 Installation
-Requires:
+## 📦 Dependencies
 
-    Python 3.12+
-    
-    ffmpeg installed and added to PATH
-    
-    uv package manager (recommended)
-    
-    Google AI Studio API Key
+    pytubefix
+        
+    ffmpeg (system)
+        
+    openai-whisper
+        
+    google-generativeai
+        
+    python-dotenv
+
+## 🛠 Installation
     
 1. Clone the repo
    
@@ -108,6 +125,19 @@ Content includes:
     
     Extra (PT-BR)
 
+## 🧠 Why this project matters
+
+This tool demonstrates:
+
+    Multimodal processing (audio + text)
+        
+    Integration of ASR + LLMs
+        
+    Automation pipelines
+        
+    Clean code organization
+        
+    Practical GenAI applied to real data
 
 # 🇧🇷 Português
 ## 📌 Visão Geral
@@ -161,17 +191,33 @@ Funciona com vídeos longos (1h+).
         ├── uv.lock
         └── pyproject.toml
 
+## 📦 Dependencias
+
+    pytubefix
+        
+    ffmpeg (system)
+        
+    openai-whisper
+        
+    google-generativeai
+        
+    python-dotenv
+
 ## 🛠 Instalação
 
-Requisitos:
-    
-    Python 3.12+
-    
-    ffmpeg instalado e adicionado ao PATH
-    
-    uv package manager (recomendado)
-    
-    Chave própria do Google AI Studio API
+1. Clone o repositório
+   
+        git clone https://github.com/<your-user>/YT-LLM-Summarizer
+   
+        cd YT-LLM-Summarizer
+
+2. Instale as Dependências
+
+         uv install
+
+3. Crie o seu .env
+   
+        GOOGLE_API_KEY=your_key_here
 
 ## ▶️ Uso
 
