@@ -46,7 +46,7 @@ Works on long videos (1h+).
     │   ├── converter.py
     │   ├── summarizer.py
     ├── summaries/
-    ├── temp/ # auto-created and auto-deleted
+    ├── temp/ (auto-created and auto-deleted)
     ├── main.py
     ├── .env
     ├── README.md
@@ -154,7 +154,7 @@ Funciona com vídeos longos (1h+).
         │   ├── converter.py
         │   ├── summarizer.py
         ├── summaries/
-        ├── temp/ # auto-created and auto-deleted
+        ├── temp/ (Criado automaticamente durante o uso e excluído após o término do programa)
         ├── main.py
         ├── .env
         ├── README.md
