@@ -83,7 +83,7 @@ YouTube URL → Download (pytubefix) → Convert to WAV (ffmpeg) → Transcribe 
     
 1. Clone the repo
    
-        git clone https://github.com/<your-user>/YT-LLM-Summarizer
+        git clone https://github.com/GuilhermeSecco/YT-LLM-Summarizer
    
         cd YT-LLM-Summarizer
 
