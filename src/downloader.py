@@ -1,4 +1,5 @@
 import re
+import shutil
 from pytubefix import YouTube
 from pathlib import Path
 
@@ -34,7 +35,11 @@ def download_audio(url: str) -> Path:
     video_id = extract_video_id(url)
 
     temp_dir = Path("temp")
-    temp_dir.mkdir(exist_ok=True)
+
+    # Cleans temp if already exists
+    if temp_dir.exists():
+        shutil.rmtree(temp_dir)
+    temp_dir.mkdir()
 
     yt = YouTube(url)
     title = yt.title

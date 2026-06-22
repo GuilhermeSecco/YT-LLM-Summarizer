@@ -76,7 +76,7 @@ def generate_summary(text: str) -> str:
     Tradução fiel das notas acima, sem adicionar conteúdo.
     """
 
-    model = genai.GenerativeModel("gemini-2.0-flash")
+    model = genai.GenerativeModel("gemini-3.1-flash-lite")
 
     response = model.generate_content(prompt)
 
