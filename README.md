@@ -1,7 +1,7 @@
 # 🎥 YT-LLM-Summarizer
 
 ![Python](https://img.shields.io/badge/Python-3.12-blue)
-![Gemini](https://img.shields.io/badge/LLM-Gemini%202.0%20Flash-orange)
+![Gemini](https://img.shields.io/badge/LLM-Gemini%203.1%20Flash%20Lite-orange)
 ![Whisper](https://img.shields.io/badge/ASR-Whisper-green)
 ![YouTube](https://img.shields.io/badge/YouTube-Audio%20Extraction-red)
 ![License](https://img.shields.io/badge/License-MIT-lightgrey)
@@ -21,7 +21,7 @@ YT-LLM-Summarizer is a command-line tool that:
 
     Transcribes using Whisper
 
-    Summarizes using Google's Gemini 2.0 Flash
+    Summarizes using Google's Gemini 3.1 Flash Lite
 
     Produces English + Brazilian Portuguese output
 
@@ -34,6 +34,10 @@ Works on long videos (1h+).
 Pipeline:
         
 YouTube URL → Download (pytubefix) → Convert to WAV (ffmpeg) → Transcribe (Whisper) → Summarize (Gemini) → Markdown Output
+
+## ❗ Gemini Limitations
+
+The free tier has a limited RPM (requests per minute). If you hit a 429 error, wait a minute and try again, or enable billing in Google AI Studio.
 
 ## ⭐ Features
 
@@ -95,12 +99,13 @@ YouTube URL → Download (pytubefix) → Convert to WAV (ffmpeg) → Transcribe 
 3. Clone the repo
    
         git clone https://github.com/GuilhermeSecco/YT-LLM-Summarizer
+        cd YT-LLM-Summarizer
 
-4. Install dependencies
+5. Install dependencies
 
-         uv install
+         uv sync
 
-5. Create your .env
+6. Create your .env
    
         GOOGLE_API_KEY=your_key_here
 
