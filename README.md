@@ -80,18 +80,28 @@ YouTube URL → Download (pytubefix) → Convert to WAV (ffmpeg) → Transcribe 
     python-dotenv
 
 ## 🛠 Installation
-    
-1. Clone the repo
+
+1. Install ffmpeg    
+
+   On Windows, open your powershell and use:
+   
+        winget install ffmpeg
+
+2. Create a Gemini API Key
+
+    Learn how to do it here:
+   
+        https://ai.google.dev/gemini-api/docs/api-key
+            
+3. Clone the repo
    
         git clone https://github.com/GuilhermeSecco/YT-LLM-Summarizer
-   
-        cd YT-LLM-Summarizer
 
-2. Install dependencies
+4. Install dependencies
 
          uv install
 
-3. Create your .env
+5. Create your .env
    
         GOOGLE_API_KEY=your_key_here
 
