@@ -3,11 +3,26 @@ from src.downloader import download_audio
 from src.converter import convert_to_wav
 from src.summarizer import transcribe_audio, generate_summary
 import argparse
+import re
 from dotenv import load_dotenv
 load_dotenv()
 
 def sanitize_filename(title: str) -> str:
-    return "".join(c for c in title if c.isalnum() or c in " .-_").strip()
+    # Remove padrões de data (DD/MM/YYYY ou DDMMYYYY) e hora (HH:MM ou HHMM)
+    title = re.sub(r'\b\d{2}[/\-]?\d{2}[/\-]?\d{4}\b', '', title)
+    title = re.sub(r'\b\d{2}:\d{2}\b', '', title)
+    title = re.sub(r'\b\d{4}\b', '', title)  # ano solto
+
+    # Remove separadores comuns usados pelo YouTube em lives (|, •, –)
+    title = re.sub(r'[|•–]', '', title)
+
+    # Remove caracteres inválidos para nomes de arquivo
+    title = "".join(c for c in title if c.isalnum() or c in " .-_")
+
+    # Remove espaços múltiplos e espaços nas bordas
+    title = re.sub(r' +', ' ', title).strip()
+
+    return title
 
 def run_pipeline(url: str) -> Path:
     """

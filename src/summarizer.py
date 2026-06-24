@@ -35,45 +35,41 @@ def generate_summary(text: str) -> str:
     """
 
     prompt = f"""
-    You are generating a clean, concise and natural summary of a YouTube video.
-    Below is the raw transcript.
+    Você é um assistente especializado em resumir aulas acadêmicas e técnicas.
+    Abaixo está a transcrição de uma aula.
 
-    Your goals:
-    - Produce a short, human-sounding summary (not robotic or repetitive).
-    - Focus on the main ideas mentioned ONLY in the transcript.
-    - Avoid adding invented details or misinterpreting library names.
-    - Keep the summary fluid, natural, and clear.
-    - After writing the English version, provide a Brazilian Portuguese version with the same structure.
-    - Preserve the original tone of the speaker when appropriate.
-    - In PT-BR, translate meaningfully, not word-for-word.
-    - Remove filler words or repeated ideas from the transcript.
+    Seu objetivo é produzir um resumo completo e didático que permita ao aluno
+    compreender toda a matéria sem precisar assistir à aula.
 
-    Transcript:
+    Regras:
+    - Não omita conceitos, definições ou exemplos importantes.
+    - Mantenha a ordem lógica em que os tópicos foram apresentados.
+    - Use linguagem clara e direta, sem ser robótico.
+    - Se houver fórmulas, passos ou processos, descreva-os com precisão.
+    - Não invente conteúdo que não esteja na transcrição.
+    - Ignore repetições, pausas e falas irrelevantes do professor.
+
+    Transcrição:
     {text}
 
-    Now return the following sections, first in English, then in Brazilian Portuguese:
-    
-    --- English ---
-    
-    ### Summary
-    A natural, well-written paragraph describing the main ideas discussed in the video.
+    Retorne as seguintes seções:
 
-    ### Key Insights
-    3–5 short bullet points capturing the most important takeaways.
+    ### Resumo Geral
+    Um parágrafo introdutório descrevendo o tema central da aula e o que foi abordado.
 
-    ### Notes
-    Small clarifications that were mentioned in the transcript, without speculation.
+    ### Conteúdo da Aula
+    Os tópicos explicados na aula, em ordem, com explicações completas.
+    Use subtítulos (####) para separar cada tópico quando necessário.
 
-    --- Português ---
+    ### Definições e Conceitos-Chave
+    Lista dos termos, definições e conceitos importantes mencionados na aula.
 
-    ### Resumo
-    Tradução natural do resumo acima, com tom humano e claro.
+    ### Exemplos e Aplicações
+    Exemplos práticos, exercícios ou aplicações que o professor apresentou.
+    Se não houver, omita esta seção.
 
-    ### Pontos Chave
-    Tradução dos insights acima, mantendo significado e objetividade.
-
-    ### Extra
-    Tradução fiel das notas acima, sem adicionar conteúdo.
+    ### Pontos de Atenção
+    Alertas, dicas ou observações que o professor enfatizou durante a aula.
     """
 
     model = genai.GenerativeModel("gemini-3.1-flash-lite")
